@@ -1,9 +1,8 @@
 import React, { ChangeEvent } from 'react';
 
-import { DenseConfig, IConfigComponent } from '../../../../../core/reactFlow/block';
+import { DenseConfig, IConfigComponent } from '../../../../../core/block';
 import NumberInput from '../../../../Input/NumberInput';
 import { configComponentToReactNode } from './util';
-import TextInput from '../../../../Input/TextInput';
 
 type Props = {
 	config: DenseConfig;
@@ -14,7 +13,7 @@ const DenseConfigComponent = ({ config, onChange }: Props) => {
 	const { units } = config;
 
 	const configComponent: IConfigComponent<typeof config> = {
-		units: <TextInput propertyName="units" onChange={onChange} propertyContent={units} />,
+		units: <NumberInput propertyName="units" onChange={onChange} propertyContent={Number(units)} />,
 	};
 
 	return <>{configComponentToReactNode(configComponent)}</>;

@@ -5,23 +5,22 @@
 }
 
 .start {
-  font-family: 'Noto Sans KR', sans-serif;
-  text-align: center;
-  justify-content: center;
-  width: 100px;
+  width: 80px;
   background-color: black;
   border-radius: 0;
-  border: none;
   padding: 10px;
   transition: 0.2s ease-in;
-  font-size: 16px;
+}
+
+.start a {
   color: var(--default-white);
-  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.2s ease-in;
 }
 
 .start:hover {
   background-color: var(--base-color);
-  color: var(--default-black);
 }
 
 .start:hover a {

@@ -1,6 +1,6 @@
 import React, { ChangeEvent } from 'react';
 
-import { IConfigComponent, InputConfig } from '../../../../../core/reactFlow/block';
+import { IConfigComponent, InputConfig } from '../../../../../core/block';
 import ThirdDivisionTupleInput from '../../../../Input/ThirdDivisionTupleInput';
 import { configComponentToReactNode } from './util';
 

@@ -8,6 +8,7 @@ import ReactFlow, {
 	MiniMap,
 	removeElements,
 } from 'react-flow-renderer';
+import { nodetypes } from '../../../core/nodetypes';
 
 const initialElements: Elements = [
 	{
@@ -166,7 +167,13 @@ const test4 = () => {
 	return (
 		<div style={{ height: 600 }}>
 			<h1>Overview Example</h1>
-			<ReactFlow elements={elements} onElementsRemove={onElementsRemove} onConnect={onConnect} onLoad={onLoad}>
+			<ReactFlow
+				elements={elements}
+				onElementsRemove={onElementsRemove}
+				onConnect={onConnect}
+				onLoad={onLoad}
+				nodeTypes={nodetypes}
+			>
 				<MiniMap
 					nodeStrokeColor={(n) => {
 						if (n.style?.background) return n.style.background as string;

@@ -1,10 +1,9 @@
 import React from 'react';
 import style from './index.module.css';
+import utils from '../../utils/index.module.css';
+import { Link } from 'react-router-dom';
 
 const Main = () => {
-  const getStart = () => {
-    window.location.href = "/dashboard";
-  }
 
   return (
     <div className={`${style.mainWrapper}`}>
@@ -12,9 +11,13 @@ const Main = () => {
         <div className={`${style.serviceDescription}`}>
           GUI로 쉽게하는 딥러닝 통합 개발환경
         </div>
-        <button className={`${style.start}`} type="button" onClick={getStart}>
+        <div
+          className={`${utils.divButton} ${style.start}`}
+        >
+          <Link to={'/dashboard'}>
             Get Start
-        </button>
+          </Link>
+        </div>
       </div>
     </div>
   );

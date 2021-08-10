@@ -22,10 +22,6 @@ const useStyle = makeStyles({
 const DashBoard = () => {
 	const classes = useStyle();
 
-	const newProject = () => {
-		window.location.href = '/newProject';
-	};
-
 	return (
 		<>
 			<Header />
@@ -33,9 +29,9 @@ const DashBoard = () => {
 				<div className={classes.container}>
 					<div className={`${style.mainWrapper}`}>
 						<div className={`${style.dashboardMenu}`}>
-							<button className={`${utils.divButton} ${style.createButton}`} type="button" onClick={newProject}>
-								프로젝트 생성
-							</button>
+							<div className={`${utils.divButton} ${style.createButton}`}>
+								<Link to="/newProject">프로젝트 생성</Link>
+							</div>
 						</div>
 						<CardGrid />
 					</div>

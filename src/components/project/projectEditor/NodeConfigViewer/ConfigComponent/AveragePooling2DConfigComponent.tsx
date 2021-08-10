@@ -1,12 +1,11 @@
 import React, { ChangeEvent } from 'react';
 
-import { AveragePooling2DConfig, IConfigComponent } from '../../../../../core/reactFlow/block';
+import { AveragePooling2DConfig, IConfigComponent } from '../../../../../core/block';
 import NumberInput from '../../../../Input/NumberInput';
 import SecondDivisionTupleInput from '../../../../Input/SecondDivisionTupleInput';
 import SelectInput from '../../../../Input/SelectInput';
 import { configComponentToReactNode } from './util';
-import { getPaddingValues } from '../../../../../core/Project/Padding';
-import TextInput from '../../../../Input/TextInput';
+import { getPaddingValues } from '../../../../../core/Padding';
 
 type Props = {
 	config: AveragePooling2DConfig;
@@ -25,7 +24,7 @@ const AveragePooling2DConfigComponent = ({ config, onChange }: Props) => {
 				propertyCandidates={getPaddingValues()}
 			/>
 		),
-		pool_size: <TextInput propertyContent={Number(pool_size)} propertyName="pool_size" onChange={onChange} />,
+		pool_size: <NumberInput propertyContent={Number(pool_size)} propertyName="pool_size" onChange={onChange} />,
 		strides: <SecondDivisionTupleInput canNull propertyContent={strides} propertyName="strides" onChange={onChange} />,
 	};
 

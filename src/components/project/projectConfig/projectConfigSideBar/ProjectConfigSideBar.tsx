@@ -1,6 +1,5 @@
 import { makeStyles } from '@material-ui/core';
 import ProjectConfigViewerSelector from '../ProjectConfigViewerSelector/ProjectConfigViewerSelector';
-import selectorItemHeads from '../index';
 
 const useStyle = makeStyles({
 	wrapper: {
@@ -16,8 +15,8 @@ const useStyle = makeStyles({
 });
 
 type Props = {
-	value: keyof typeof selectorItemHeads;
-	setValue: (num: keyof typeof selectorItemHeads) => void;
+	value: number;
+	setValue: (num: number) => void;
 };
 
 const ProjectConfigSideBar = ({ value, setValue }: Props) => {

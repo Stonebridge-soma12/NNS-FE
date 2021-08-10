@@ -1,5 +1,6 @@
 import React from 'react';
 import style from './card.module.css';
+import { CircleLoading } from '../../utils/Loading/CircularLoading';
 
 const EmptyCard = () => {
 	return (
@@ -9,10 +10,7 @@ const EmptyCard = () => {
 					<div className={`${style.cardTitle}`} />
 				</header>
 				<main className={`${style.cardMain}`}>
-					<div className={`${style.descript}`}>
-						<span className={`${style.descript}`} />
-					</div>
-					<span className={`${style.lastUpdate}`} />
+					<CircleLoading />
 				</main>
 				<footer className={`${style.cardFooter}`} />
 			</div>

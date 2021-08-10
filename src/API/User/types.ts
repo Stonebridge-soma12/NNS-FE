@@ -1,8 +1,3 @@
-export interface UserProfileImage {
-	id: number;
-	url: string;
-}
-
 export interface SignUpParams {
 	id: string;
 	pw: string;
@@ -10,18 +5,18 @@ export interface SignUpParams {
 
 export interface UserProfile {
 	name: string;
-	profileImage: UserProfileImage;
+	profileImage: string;
 	description: string;
 	createTime: Date;
 	updateTime: Date;
 }
 
 export interface UserProfileToUpdateParams {
-	profileImage: UserProfileImage;
+	profileImage: string;
 	description: string;
 }
 
 export interface UpdatedUserProfile {
-	profileImage: UserProfileImage;
+	profileImage: string;
 	description: string;
 }

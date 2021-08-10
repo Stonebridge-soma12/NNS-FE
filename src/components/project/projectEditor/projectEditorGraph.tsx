@@ -4,7 +4,6 @@ import ReactFlow, {
 	addEdge,
 	Background,
 	Connection,
-	ConnectionLineType,
 	Controls,
 	Edge,
 	Elements,
@@ -17,19 +16,10 @@ import ReactFlow, {
 	useStoreState,
 } from 'react-flow-renderer';
 import { useSelector } from 'react-redux';
-import { BlockState, InputBlockState } from '../../../core/reactFlow/block/BlockState';
-import { nodeTypes } from '../../../core/reactFlow/node/nodetypes';
+import { BlockState } from '../../../core/block/BlockState';
+import { getNodeId } from '../../../util';
+import { nodetypes } from '../../../core/nodetypes';
 import { RootState } from '../../../module';
-import {
-	canGetNodeData,
-	canInsertNode,
-	createCustomNode,
-	getNodeData,
-	getPosition,
-} from '../../../core/reactFlow/node';
-import createCustomEdge from '../../../core/reactFlow/edge';
-import { getNodeColor, getNodeStrokeColor } from '../../../core/reactFlow/node/nodetypes/component/NodeStroke';
-import ConnectionLine from '../../../core/reactFlow/connectionLine';
 
 const useStyle = makeStyles({
 	wrapper: {
@@ -57,6 +47,8 @@ const useStyle = makeStyles({
 	},
 });
 
+const nodeProtoImage = <div />;
+
 type Props = {
 	setReactInstance: EventHandler<any>;
 	setElements: EventHandler<any>;
@@ -72,16 +64,12 @@ const ProjectEditorGraph = ({ setElements, flowState, setReactInstance }: Props)
 	const reactFlowInstance = useSelector((state: RootState) => state.reactFlowInstance.instance);
 
 	useEffect(() => {
-		const inputBlockState = new InputBlockState();
-		const inputNode = createCustomNode({
-			data: inputBlockState,
-		});
-		setElements(flowState?.elements || [inputNode]);
+		setElements(flowState?.elements || []);
 	}, [flowState?.elements, setElements]);
 
 	const onConnect = useCallback(
 		(params: Edge | Connection) => {
-			setElements(addEdge(createCustomEdge(params), elements));
+			setElements(addEdge(params, elements));
 		},
 		[elements, setElements]
 	);
@@ -103,15 +91,24 @@ const ProjectEditorGraph = ({ setElements, flowState, setReactInstance }: Props)
 		(e: React.DragEvent) => {
 			e.preventDefault();
 			const localEvent = e;
-			const { dataTransfer } = localEvent;
-			if (!canGetNodeData(dataTransfer)) return;
-			const newNode: Node = createCustomNode({
-				position: getPosition(localEvent, reactFlowWrapper.current, reactFlowInstance),
-				data: getNodeData(dataTransfer),
-			});
-			if (!canInsertNode(elements, newNode)) return;
-			setElements(elements.concat(newNode));
-			setSelectedElements(newNode);
+			if (localEvent.dataTransfer.types.includes('application/nodedata')) {
+				const nodedata = JSON.parse(localEvent.dataTransfer.getData('application/nodedata')) as BlockState;
+				const reactFlowBounds = reactFlowWrapper.current?.getBoundingClientRect();
+				const position = (reactFlowInstance as any).project({
+					x: localEvent.clientX - (reactFlowBounds?.left || 0),
+					y: localEvent.clientY - (reactFlowBounds?.top || 0),
+				});
+				const newNode: Node = {
+					id: getNodeId(),
+					type: 'default',
+					position,
+					data: {
+						...nodedata,
+					},
+				};
+				setElements(elements.concat(newNode));
+				setSelectedElements(newNode);
+			}
 		},
 		[elements, reactFlowInstance, setElements, setSelectedElements]
 	);
@@ -144,10 +141,9 @@ const ProjectEditorGraph = ({ setElements, flowState, setReactInstance }: Props)
 				onKeyDown={onKeyDown}
 				onElementsRemove={onElementsRemove}
 				tabIndex={0}
-				nodeTypes={nodeTypes}
+				nodeTypes={nodetypes}
 				defaultPosition={flowState?.position}
 				defaultZoom={flowState?.zoom}
-				connectionLineComponent={ConnectionLine}
 			>
 				<Controls
 					style={{
@@ -158,10 +154,14 @@ const ProjectEditorGraph = ({ setElements, flowState, setReactInstance }: Props)
 				/>
 				<MiniMap
 					nodeStrokeColor={(n) => {
-						return getNodeStrokeColor(n);
+						if (n.type === 'input') return '#0041d0';
+						if (n.type === 'selectorNode') return '#1A192B';
+						if (n.type === 'output') return '#ff0072';
+						return '#000000';
 					}}
 					nodeColor={(n) => {
-						return getNodeColor(n);
+						if (n.type === 'selectorNode') return '#1A192B';
+						return '#000000';
 					}}
 				/>
 				<Background color="#aaa" />

@@ -1,9 +1,9 @@
 import React, { ChangeEvent } from 'react';
 
-import { ActivationConfig, IConfigComponent } from '../../../../../core/reactFlow/block';
+import { ActivationConfig, IConfigComponent } from '../../../../../core/block';
 import SelectInput from '../../../../Input/SelectInput';
 import { configComponentToReactNode } from './util';
-import { getActivationValues } from '../../../../../core/Project/Activations';
+import { getActivationValues } from '../../../../../core/Activations';
 
 type Props = {
 	config: ActivationConfig;

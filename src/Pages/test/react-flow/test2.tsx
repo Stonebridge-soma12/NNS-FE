@@ -1,4 +1,5 @@
 import ReactFlow from 'react-flow-renderer';
+import { nodetypes } from '../../../core/nodetypes';
 
 const elements = [
 	{
@@ -12,6 +13,7 @@ const elements = [
 const CustomNodeExample = () => (
 	<div style={{ height: 300 }}>
 		<h1>CustomNode 테스트</h1>
+		<ReactFlow elements={elements} nodeTypes={nodetypes} />
 	</div>
 );
 
