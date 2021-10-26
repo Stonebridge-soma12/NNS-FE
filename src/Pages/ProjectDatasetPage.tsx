@@ -36,7 +36,7 @@ export const ProjectDatasetPage = () => {
 				setDatasets(res.datasets);
 			});
 		}
-	}, [datasets, data, curPage, fetch, lastPage, pageSize]);
+	}, [datasets, curPage, fetch, lastPage, pageSize]);
 
 	const addPage = useCallback(() => {
 		if (curPage === lastPage) {

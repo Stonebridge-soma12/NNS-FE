@@ -34,6 +34,8 @@ export const ProjectDatasetViewerTop = ({
 				}
 			}
 
+			console.log(name, value, dataName);
+
 			setDatasetConfig({
 				...datasetConfig,
 				dataset: {
@@ -41,7 +43,13 @@ export const ProjectDatasetViewerTop = ({
 					name: dataName,
 				},
 			});
-			setHead(datasetConfig);
+			setHead({
+				...datasetConfig,
+				dataset: {
+					[name]: value,
+					name: dataName,
+				},
+			});
 		},
 		[library, datasetConfig, setDatasetConfig, setHead]
 	);
@@ -54,7 +62,10 @@ export const ProjectDatasetViewerTop = ({
 				...datasetConfig,
 				[name]: value,
 			});
-			setHead(datasetConfig);
+			setHead({
+				...datasetConfig,
+				[name]: value,
+			});
 		},
 		[datasetConfig, setDatasetConfig, setHead]
 	);
@@ -63,11 +74,16 @@ export const ProjectDatasetViewerTop = ({
 		(e: ChangeEvent<HTMLInputElement>) => {
 			const { name, checked } = e.target;
 
+			console.log(name, checked);
+
 			setDatasetConfig({
 				...datasetConfig,
 				[name]: checked,
 			});
-			setHead(datasetConfig);
+			setHead({
+				...datasetConfig,
+				[name]: checked,
+			});
 		},
 		[datasetConfig, setDatasetConfig, setHead]
 	);
@@ -76,6 +92,8 @@ export const ProjectDatasetViewerTop = ({
 		(e: ChangeEvent<any>) => {
 			const { name, value } = e.target;
 
+			console.log(name, value);
+
 			setDatasetConfig({
 				...datasetConfig,
 				normalization: {
@@ -83,10 +101,18 @@ export const ProjectDatasetViewerTop = ({
 					[name]: value,
 				},
 			});
-			setHead(datasetConfig);
+			setHead({
+				...datasetConfig,
+				normalization: {
+					...datasetConfig.normalization,
+					[name]: value,
+				},
+			});
 		},
 		[datasetConfig, setDatasetConfig, setHead]
 	);
+
+	console.log(datasetConfig);
 
 	return (
 		<>
@@ -410,9 +436,7 @@ const ProjectDatasetViewer = ({ datasetConfig, setDatasetConfig, setHead, librar
 		fetch(datasetConfig.dataset.id).then((res) => {
 			setDatasetDetail(res);
 		});
-	}, [fetch, datasetConfig]);
-
-	console.log(datasetDetail);
+	}, [fetch, datasetConfig.dataset.id]);
 
 	return (
 		<>

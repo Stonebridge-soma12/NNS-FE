@@ -15,6 +15,9 @@ const ProjectDatasetMain = ({
 	library: Array<Dataset>;
 }) => {
 	const [value, setValue] = useState<DatasetConfig>(selectorItemsHeads[0]);
+	useEffect(() => {
+		console.log('render');
+	}, [value?.id]);
 
 	const addPage = useCallback(() => {
 		console.log('do something');
