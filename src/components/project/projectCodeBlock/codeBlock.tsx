@@ -7,12 +7,11 @@ type Props = {
 
 const CodeBlockWrapper = styled.div`
 	width: 100%;
-	align-items: center;
-	justify-content: center;
 	font-size: 14px;
 	margin: 2%;
+	padding: 0;
 	overflow: scroll;
-	font-family: 'Noto Sans KR', sans-serif;
+	font-family: 'Fira Code', monospace;
 `;
 
 const CodeBlock = (props: Props) => {
@@ -20,7 +19,7 @@ const CodeBlock = (props: Props) => {
 
 	return (
 		<CodeBlockWrapper>
-			<CopyBlock text={code} language="python" showLineNumbers startingLineNumber={1} wrapLines theme={github} />
+			<CopyBlock text={code} language="python" showLineNumbers wrapLines theme={github} codeBlock />
 		</CodeBlockWrapper>
 	);
 };
