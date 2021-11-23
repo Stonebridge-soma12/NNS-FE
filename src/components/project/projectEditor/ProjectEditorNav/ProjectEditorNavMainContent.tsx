@@ -1,21 +1,21 @@
-import React, { MouseEventHandler, useState } from 'react';
+import React, { FC, MouseEventHandler, useState } from 'react';
 import CodeModal from '../../projectCodeBlock/codeModal';
 
 type Props = {
-	onGetPythonCode: MouseEventHandler;
+	onGetPythonCode: any;
 	onTrainModel: MouseEventHandler;
+	code?: string;
+	erasePythonCode: any;
 };
 
-const ProjectEditorNavMainContent = ({ onGetPythonCode, onTrainModel }: Props) => {
-	const [isOpen, setIsOpen] = useState(false);
-
+const ProjectEditorNavMainContent: FC<Props> = ({ onGetPythonCode, onTrainModel, code, erasePythonCode }: Props) => {
 	return (
 		<div className="btns-group">
-			<CodeModal setIsOpen={setIsOpen} isOpen={isOpen} onGetPythonCode={onGetPythonCode} />
+			{code && <CodeModal erasePythonCode={erasePythonCode} code={code} />}
 			<button
 				type="button"
 				onClick={() => {
-					setIsOpen(true);
+					onGetPythonCode();
 				}}
 				className="btn js-modal-open"
 			>
@@ -27,6 +27,10 @@ const ProjectEditorNavMainContent = ({ onGetPythonCode, onTrainModel }: Props) =
 			</button>
 		</div>
 	);
+};
+
+ProjectEditorNavMainContent.defaultProps = {
+	code: undefined,
 };
 
 export default ProjectEditorNavMainContent;
