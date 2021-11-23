@@ -7,7 +7,7 @@ import { sleep } from '../util';
 import SimpleBackdrop from '../components/utils/BackLoading';
 
 type PythonCodeResult = {
-	data: null | Blob;
+	data: null | { code: string };
 	error: null | string;
 	loading: boolean;
 } | null;
@@ -27,37 +27,40 @@ const usePythonCode = () => {
 				loading: true,
 			});
 
-			const delayedData = await sleep(1000).then(() => {
-				const res = updateProjectContent(projectNo, projectContent)
-					.then(async () => {
-						const data = await getPythonCode(projectNo);
-						setResult({
-							error: null,
-							data,
-							loading: false,
-						});
-						return data;
-					})
-					.catch((e: Error) => {
-						setResult({
-							error: e.message,
-							data: null,
-							loading: false,
-						});
-						throw e;
+			const res = updateProjectContent(projectNo, projectContent)
+				.then(async () => {
+					const data = await getPythonCode(projectNo);
+					setResult({
+						error: null,
+						data,
+						loading: false,
 					});
-				return res;
-			});
-
-			return delayedData;
+					return data;
+				})
+				.catch((e: Error) => {
+					setResult({
+						error: e.message,
+						data: null,
+						loading: false,
+					});
+					throw e;
+				});
+			return res;
 		},
 		[setResult]
 	);
+
+	useEffect(() => {
+		return () => {
+			setResult(null);
+		};
+	}, [setResult]);
 
 	return {
 		...result,
 		loadingFallback: <SimpleBackdrop open />,
 		fetch,
+		setResult,
 	};
 };
 
