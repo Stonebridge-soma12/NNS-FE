@@ -12,6 +12,7 @@ const CodeBlockWrapper = styled.div`
 	font-size: 14px;
 	margin: 2%;
 	overflow: scroll;
+	font-family: 'Noto Sans KR', sans-serif;
 `;
 
 const CodeBlock = (props: Props) => {
