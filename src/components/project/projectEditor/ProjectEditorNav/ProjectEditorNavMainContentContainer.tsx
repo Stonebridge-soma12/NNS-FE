@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import { useCallback } from 'react';
-import fileDownload from 'js-file-download';
 import { FlowExportObject } from 'react-flow-nns';
 import { useSnackbar } from 'notistack';
 import { atom, useRecoilState } from 'recoil';
@@ -88,14 +87,12 @@ const ProjectEditorNavMainContentContainer = () => {
 	const { trainFetch, loading } = useTrainModel();
 
 	const onGetPythonCode = useCallback(() => {
-		(async () => {
-			await fetch(projectNo, {
-				output: '',
-				flowState: instance?.toObject() as FlowExportObject,
-			}).catch(() => {
-				enqueueSnackbar('파이썬 코드로 변환하는데 실패했습니다.', { variant: 'error' });
-			});
-		})();
+		fetch(projectNo, {
+			output: '',
+			flowState: instance?.toObject() as FlowExportObject,
+		}).catch(() => {
+			enqueueSnackbar('파이썬 코드로 변환하는데 실패했습니다.', { variant: 'error' });
+		});
 	}, [enqueueSnackbar, fetch, instance, projectNo]);
 
 	const erasePythonCode = useCallback(() => {
@@ -103,20 +100,18 @@ const ProjectEditorNavMainContentContainer = () => {
 	}, [setResult]);
 
 	const onTrainModel = useCallback(() => {
-		(async () => {
-			await trainFetch(projectNo, {
-				output: '',
-				flowState: instance?.toObject() as FlowExportObject,
-			})
-				.then(async () => {
-					enqueueSnackbar('학습요청에 성공했습니다.', {
-						variant: 'success',
-					});
-				})
-				.catch((err) => {
-					enqueueSnackbar(err.message, { variant: 'error' });
+		trainFetch(projectNo, {
+			output: '',
+			flowState: instance?.toObject() as FlowExportObject,
+		})
+			.then(async () => {
+				enqueueSnackbar('학습요청에 성공했습니다.', {
+					variant: 'success',
 				});
-		})();
+			})
+			.catch((err) => {
+				enqueueSnackbar(err.message, { variant: 'error' });
+			});
 	}, [enqueueSnackbar, trainFetch, instance, projectNo]);
 
 	return (

@@ -1,5 +1,6 @@
 import React, { FC, MouseEventHandler, useState } from 'react';
-import CodeModal from '../../projectCodeBlock/codeModal';
+import CustomModal from '../../projectCodeBlock/customModal';
+import CodeBlock from '../../projectCodeBlock/codeBlock';
 
 type Props = {
 	onGetPythonCode: any;
@@ -11,7 +12,7 @@ type Props = {
 const ProjectEditorNavMainContent: FC<Props> = ({ onGetPythonCode, onTrainModel, code, erasePythonCode }: Props) => {
 	return (
 		<div className="btns-group">
-			{code && <CodeModal erasePythonCode={erasePythonCode} code={code} />}
+			{code && <CustomModal setIsOpen={erasePythonCode} isOpen body={<CodeBlock code={code} />} head="코드" />}
 			<button
 				type="button"
 				onClick={() => {
