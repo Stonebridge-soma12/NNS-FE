@@ -19,7 +19,7 @@ const CodeBlock = (props: Props) => {
 
 	return (
 		<CodeBlockWrapper>
-			<CopyBlock text={code} language="python" showLineNumbers startingLineNumber={1} wrapLines theme={atomOneLight} />
+			<CopyBlock text={code} language="python" showLineNumbers startingLineNumber={1} wrapLines theme={github} />
 		</CodeBlockWrapper>
 	);
 };
