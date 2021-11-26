@@ -19,6 +19,9 @@ export enum BlockType {
 	Add = 'Add',
 	Subtract = 'Subtract',
 	Log = 'Log',
+
+	// Util
+	Comment = 'Comment',
 }
 
 export default BlockType;

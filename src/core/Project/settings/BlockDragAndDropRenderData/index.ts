@@ -7,6 +7,7 @@ import {
 	BatchNormalizationBlockState,
 	BlockState,
 	CeilBlockState,
+	CommentBlockState,
 	Conv2DBlockState,
 	DenseBlockState,
 	DropoutBlockState,
@@ -49,5 +50,9 @@ export const BlockRenderData: { type: BlockCategory; states: BlockState[] }[] = 
 			new SubtractBlockState(),
 			new LogBlockState(),
 		],
+	},
+	{
+		type: BlockCategory.Util,
+		states: [new CommentBlockState()],
 	},
 ];

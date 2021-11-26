@@ -8,6 +8,7 @@ export const NodeStrokeColorTable: {
 } = {
 	Layer: '#34b691',
 	Math: '#4e50d6',
+	Util: '#0f0f0f',
 };
 
 export const getNodeStrokeColor = (e: Node<BlockState>) => {
@@ -22,6 +23,7 @@ export const NodeColorTable: {
 } = {
 	Layer: '#34b691',
 	Math: '#4e50d6',
+	Util: '#c7c7c7',
 };
 
 export const getNodeColor = (e: Node<BlockState>) => {

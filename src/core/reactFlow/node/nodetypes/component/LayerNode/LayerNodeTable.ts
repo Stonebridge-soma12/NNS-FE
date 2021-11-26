@@ -1,6 +1,7 @@
 import { BlockType } from '../../../../block';
 import DefaultNode from './DefaultNode';
 import InputNode from './inputNode';
+import CommentNode from './commentNode';
 
 type Key = keyof typeof BlockType;
 type LayerNodeTableType = {
@@ -28,6 +29,9 @@ const LayerNodeTable: LayerNodeTableType = {
 	Add: DefaultNode,
 	Subtract: DefaultNode,
 	Log: DefaultNode,
+
+	// Util
+	Comment: CommentNode,
 };
 
 export default LayerNodeTable;

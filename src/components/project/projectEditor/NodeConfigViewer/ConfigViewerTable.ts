@@ -18,6 +18,7 @@ import SqrtConfigComponent from './ConfigComponent/Math/SqrtConfigComponent';
 import AddConfigComponent from './ConfigComponent/Math/AddConfigComponent';
 import SubtractConfigComponent from './ConfigComponent/Math/SubtractConfigComponent';
 import LogConfigComponent from './ConfigComponent/Math/LogConfigComponent';
+import CommentConfigComponent from './ConfigComponent/UtilNode/CommentConfigComponent';
 
 type ConfigViewerTableKeyType = typeof BlockType[keyof typeof BlockType];
 
@@ -46,6 +47,9 @@ const ConfigViewerTable: ConfigViewerTableType = {
 	Add: AddConfigComponent,
 	Subtract: SubtractConfigComponent,
 	Log: LogConfigComponent,
+
+	// Util
+	Comment: CommentConfigComponent,
 };
 
 export default ConfigViewerTable;

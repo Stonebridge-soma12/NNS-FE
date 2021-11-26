@@ -56,6 +56,8 @@ const LayerNode = (props: NodeProps<BlockState>) => {
 	});
 	const nodeColor = nodeColorStyle();
 
+	console.log(data);
+
 	return (
 		<>
 			<div

@@ -30,6 +30,8 @@ export const INPUT_CONNECT_NUMBER: {
 	Add: DOUBLE,
 	Subtract: DOUBLE,
 	Log: UNIQUE,
+
+	Comment: NONE,
 };
 
 type OUTPUT_CONNECT_NUMBER_KEY = keyof typeof BlockType;
@@ -57,4 +59,6 @@ export const OUTPUT_CONNECT_NUMBER: {
 	Add: INFINITY,
 	Subtract: INFINITY,
 	Log: INFINITY,
+
+	Comment: NONE,
 };

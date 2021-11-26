@@ -405,6 +405,7 @@ const BlockRelationShip: {
 		BlockType.Subtract,
 		BlockType.Log,
 	]),
+	Comment: new Set([]),
 };
 
 export default BlockRelationShip;

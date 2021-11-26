@@ -1,6 +1,6 @@
 import { Edge, FlowElement, isNode, Node } from 'react-flow-nns';
 import GraphNode from './GraphNode';
-import { BlockState } from '../block';
+import { BlockType, BlockState } from '../block';
 import graphNodeNameValidator from './validate';
 
 class GraphConvertor {
@@ -51,6 +51,7 @@ class GraphConvertor {
 
 		const outputNodeName = Array.from(this.nodeIdMaps)
 			.filter(([, node]) => {
+				if (node.type === BlockType.Comment) return false;
 				return node.output.length === 0;
 			})
 			.map(([, node]) => {
@@ -58,6 +59,7 @@ class GraphConvertor {
 			});
 		const inputNodeName = Array.from(this.nodeIdMaps)
 			.filter(([, node]) => {
+				if (node.type === BlockType.Comment) return false;
 				return node.input.length === 0;
 			})
 			.map(([, node]) => {

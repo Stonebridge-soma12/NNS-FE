@@ -22,6 +22,7 @@ export interface BlockConfigDto {
 	scale: number;
 	offset: number;
 	target_shape: number;
+	comment: string;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
@@ -58,6 +59,8 @@ export class BlockConfig implements IBlockConfig {
 
 	target_shape: string;
 
+	comment: string;
+
 	constructor(blockConfig?: BlockConfigDto) {
 		this.units = blockConfig?.units?.toString() || '0';
 		this.filters = blockConfig?.filters?.toString() || '0';
@@ -74,6 +77,7 @@ export class BlockConfig implements IBlockConfig {
 		this.strides = blockConfig?.strides?.toString() || '0,0';
 		this.padding = blockConfig?.padding || Paddings.Same;
 		this.pool_size = blockConfig?.pool_size?.toString() || '0,0';
+		this.comment = blockConfig?.comment || '';
 	}
 
 	static toDto(blockConfig: Partial<BlockConfig>) {
@@ -93,6 +97,7 @@ export class BlockConfig implements IBlockConfig {
 			strides: toNumberDivision(blockConfig?.strides || '0,0'),
 			target_shape: Number(blockConfig?.target_shape),
 			units: Number(blockConfig?.units),
+			comment: blockConfig?.comment || '',
 		};
 
 		return dto;
@@ -176,6 +181,10 @@ export class AddConfig implements IBlockConfig {}
 export class SubtractConfig implements IBlockConfig {}
 
 export class LogConfig implements IBlockConfig {}
+
+export class CommentConfig implements IBlockConfig {
+	comment = '';
+}
 
 export type IConfigComponent<T> = {
 	[K in keyof T]: JSX.Element;

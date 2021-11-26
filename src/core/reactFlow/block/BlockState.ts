@@ -1,31 +1,29 @@
 // eslint-disable-next-line max-classes-per-file
 import { BlockCategory } from './BlockCategory';
 import {
-	// Layer
+	AbsConfig,
 	ActivationConfig,
+	AddConfig,
 	AveragePooling2DConfig,
 	BatchNormalizationConfig,
-	BlockConfig,
+	CeilConfig,
+	CommentConfig,
 	Conv2DConfig,
 	DenseConfig,
 	DropoutConfig,
 	FlattenConfig,
+	FloorConfig,
+	IBlockConfig,
 	InputConfig,
+	LogConfig,
 	MaxPool2DConfig,
 	RescalingConfig,
 	ReshapeConfig,
-	// Math
-	AbsConfig,
-	CeilConfig,
-	FloorConfig,
 	RoundConfig,
 	SqrtConfig,
-	AddConfig,
 	SubtractConfig,
-	LogConfig,
-	IBlockConfig,
 } from './BlockConfig';
-import { BlockType } from './BlockType';
+import BlockType from './BlockType';
 
 export interface BlockState {
 	category: BlockCategory;
@@ -225,4 +223,14 @@ export class LogBlockState implements BlockState {
 	param: IBlockConfig = new LogConfig();
 
 	type: BlockType = BlockType.Log;
+}
+
+export class CommentBlockState implements BlockState {
+	label = 'Comment';
+
+	category: BlockCategory = BlockCategory.Util;
+
+	param: IBlockConfig = new CommentConfig();
+
+	type: BlockType = BlockType.Comment;
 }

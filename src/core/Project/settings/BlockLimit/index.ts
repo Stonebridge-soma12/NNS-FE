@@ -2,6 +2,7 @@ import { BlockType } from '../../../reactFlow/block/BlockType';
 
 const UNIQUE = 1;
 const INFINITY = 100;
+const NONE = 0;
 
 type MAXIMUM_NUMBER_PER_BLOCK_TYPE_AT_GRAPH_KEY = keyof typeof BlockType;
 export const MAXIMUM_NUMBER_PER_BLOCK_TYPE_AT_GRAPH: {
@@ -27,4 +28,6 @@ export const MAXIMUM_NUMBER_PER_BLOCK_TYPE_AT_GRAPH: {
 	Add: INFINITY,
 	Subtract: INFINITY,
 	Log: INFINITY,
+
+	Comment: INFINITY,
 };
