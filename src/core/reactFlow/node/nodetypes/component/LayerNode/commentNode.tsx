@@ -12,6 +12,7 @@ const useStyle = makeStyles({
 	nodeTextarea: {
 		width: '100%',
 		height: '100%',
+		color: '#0f0f0f',
 	},
 });
 
@@ -20,7 +21,7 @@ const CommentNode = ({ data, isConnectable, sourcePosition = Position.Bottom }: 
 	const { isValidationConnection } = useValidationConnection();
 	const params = data.param as CommentConfig;
 
-	return <div className={classes.wrapper}>{params.comment}</div>;
+	return <div className={`${classes.wrapper} ${classes.nodeTextarea}`}>{params.comment}</div>;
 };
 
 export default memo(CommentNode);
