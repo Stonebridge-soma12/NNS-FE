@@ -1,6 +1,15 @@
 import React, { memo } from 'react';
+import makeStyles from '@material-ui/core/styles/makeStyles';
+
+const useStyle = makeStyles({
+	bold: {
+		fontWeight: 'bold',
+	},
+});
 
 const ActivationDescriptionComponent = () => {
+	const classes = useStyle();
+
 	return (
 		<div className="nodeDescription">
 			<div className="tit">
@@ -28,7 +37,7 @@ const ActivationDescriptionComponent = () => {
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Activation function, such as relu.</div>
+									<div className="txt">Activation function, such as &quot;relu&quot;.</div>
 								</div>
 							</div>
 						</td>

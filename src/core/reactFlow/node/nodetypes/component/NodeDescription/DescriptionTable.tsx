@@ -5,6 +5,7 @@ import CommentNode from '../LayerNode/commentNode';
 import ActivationDescriptionComponent from './Layer/ActivationDescriptionComponent';
 import InputDescriptionComponent from './Layer/InputDescriptionComponent';
 import AveragePooling2DDescriptionComponent from './Layer/AveragePooling2DDescriptionComponent';
+import BatchNormalizationDescriptionComponent from './Layer/BatchNormalizationDescriptionComponent';
 
 type Key = keyof typeof BlockType;
 type NodeDescriptionTableType = {
@@ -14,7 +15,7 @@ type NodeDescriptionTableType = {
 const NodeDescriptionTable: NodeDescriptionTableType = {
 	Activation: ActivationDescriptionComponent,
 	AveragePooling2D: AveragePooling2DDescriptionComponent,
-	BatchNormalization: ActivationDescriptionComponent,
+	BatchNormalization: BatchNormalizationDescriptionComponent,
 	Conv2D: ActivationDescriptionComponent,
 	Dense: ActivationDescriptionComponent,
 	Dropout: ActivationDescriptionComponent,
