@@ -42,6 +42,7 @@
     "react-reflex": "^4.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "react-tooltip": "^4.2.21",
     "react-uuid": "^1.0.2",
     "recoil": "^0.4.0",
     "redux": "^4.1.0",

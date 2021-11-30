@@ -1,11 +1,14 @@
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import React, { createElement, memo } from 'react';
+import ReactTooltip from 'react-tooltip';
 import { NodeProps, useStoreState } from 'react-flow-nns';
 import { BlockState } from '../../../../block';
 import LayerNodeTable from './LayerNodeTable';
 import useTargetCandidates from '../useTargetCandidates';
+import NodeDescriptionTable from '../NodeDescription/DescriptionTable';
 import style from '../target.module.css';
 import { NodeColorTable, NodeStrokeColorTable } from '../NodeStroke';
+import { DatasetPreviewTableRow } from '../../../../../../components/project/projectDataset/projectDatasetViewer/ProjectDatasetTable';
 
 const useLayerStyle = makeStyles({
 	wrapper: {
@@ -40,6 +43,10 @@ const useLayerStyle = makeStyles({
 		fontSize: 7,
 		opacity: 0.5,
 	},
+	tooltip: {
+		width: '400px',
+		display: 'inline-block',
+	},
 });
 
 const LayerNode = (props: NodeProps<BlockState>) => {
@@ -67,6 +74,8 @@ const LayerNode = (props: NodeProps<BlockState>) => {
 					`${classes.wrapper} ${nodeColor.wrapper}`
 					// ${targetCandidates?.has(type) && style.targetCandidate}`
 				}
+				data-tip={`nodeDescription${data.label}`}
+				data-for={`nodeDescription${data.label}`}
 			>
 				<div className={classes.nodeHeaderWrapper}>
 					<span className={classes.nodeHeader}>{type}</span>
@@ -75,6 +84,54 @@ const LayerNode = (props: NodeProps<BlockState>) => {
 					<div className={classes.nodeContent}>{node}</div>
 				</div>
 			</div>
+			<ReactTooltip
+				id={`nodeDescription${data.label}`}
+				type="light"
+				place="right"
+				effect="solid"
+				border
+				borderColor="black"
+				offset={{ right: 20 }}
+				className={classes.tooltip}
+			>
+				<div className="nodeDescription">
+					<div className="tit">
+						<h1 className="nodeType">Input</h1>
+					</div>
+					<table className="descTbl">
+						<tbody>
+							<tr>
+								<th className="descTh">
+									<div className="content">
+										<div className="txt-group">
+											<div className="tit">Args</div>
+										</div>
+									</div>
+								</th>
+							</tr>
+							<tr>
+								<td className="descTd">
+									<div className="content">
+										<div className="txt-group">
+											<div className="txt">Shape</div>
+										</div>
+									</div>
+								</td>
+								<td className="descTd">
+									<div className="content">
+										<div className="txt-group">
+											<div className="txt">
+												A shape tuple (integers), not including the batch size. For instance, shape=(32,) indicates that
+												the expected input will be batches of 32-dimensional vectors.
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</ReactTooltip>
 		</>
 	);
 };

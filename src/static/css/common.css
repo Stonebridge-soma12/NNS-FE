@@ -532,6 +532,21 @@ select::-ms-expand { display: none; /* 화살표 없애기 for IE10, 11*/ }
 
 .tbl td .content img { display: block; margin: 0 auto; }
 
+.nodeDescription .tit { padding: 5px 15px 10px; }
+.nodeDescription .tit .nodeType { font-size: 16px; color: #707070; font-weight: 700; }
+
+.nodeDescription .descTbl { table-layout: fixed; border-collapse: collapse; border: 1px solid #eee; box-sizing: border-box; }
+.nodeDescription .descTbl .descTh,
+.nodeDescription .descTbl .descTd { border: 1px solid #eee; box-sizing: border-box; text-align: left; }
+
+.nodeDescription .descTbl .descTh .content .txt-group { display: flex; flex-direction: column; justify-content: space-between; padding: 5px 15px 10px; box-sizing: border-box; }
+.nodeDescription .descTbl .descTh .content .txt-group .tit { font-size: 16px; font-weight: 700; color: #707070; text-overflow: ellipsis; }
+.nodeDescription .descTbl .descTh .content .txt-group .txt { font-size: 13px; font-weight: 400; color: #707070; text-overflow: ellipsis; }
+
+.nodeDescription .descTbl .descTd .content .txt-group { display: flex; flex-direction: column; justify-content: space-between; padding: 5px 15px 10px; box-sizing: border-box; }
+.nodeDescription .descTbl .descTd .content .txt-group .txt { font-size: 13px; font-weight: 400; color: #707070; }
+
+
 
 @media only screen and (max-width: 1024px) {
 	/*인트로*/
