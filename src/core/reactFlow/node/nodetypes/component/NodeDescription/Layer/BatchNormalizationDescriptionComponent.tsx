@@ -13,7 +13,7 @@ const BatchNormalizationDescriptionComponent = () => {
 	return (
 		<div className="nodeDescription">
 			<div className="tit">
-				<h1 className="nodeType">AveragePooling2D</h1>
+				<h1 className="nodeType">BatchNormalization</h1>
 			</div>
 			<table className="descTbl">
 				<tbody>
