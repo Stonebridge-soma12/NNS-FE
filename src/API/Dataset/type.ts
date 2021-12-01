@@ -14,6 +14,7 @@ export type Dataset = {
 	public: boolean;
 	usable: boolean;
 	inLibrary: boolean;
+	isUploading: boolean;
 };
 
 export type PageNation = {

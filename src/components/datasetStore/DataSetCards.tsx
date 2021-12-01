@@ -27,10 +27,25 @@ const DatasetCard = ({ dataset, deleteDatasetFetch, addDatasetFetch }: DatasetCa
 				<div className="tit">{dataset.name}</div>
 				<div className="content">{dataset.description}</div>
 			</div>
-			{dataset.inLibrary && (
+			{dataset.isUploading && (
 				<button
 					type="button"
-					className="btn-bottom js-modal-open"
+					className="btn-bottom btn-gray"
+					onClick={async () => {
+						try {
+							await deleteDatasetFetch(dataset.id);
+						} catch (e: any) {
+							enqueueSnackbar(e.message, { variant: 'error' });
+						}
+					}}
+				>
+					업로드중
+				</button>
+			)}
+			{!dataset.isUploading && dataset.inLibrary && (
+				<button
+					type="button"
+					className="btn-bottom btn-red"
 					onClick={async () => {
 						try {
 							await deleteDatasetFetch(dataset.id);
@@ -42,7 +57,7 @@ const DatasetCard = ({ dataset, deleteDatasetFetch, addDatasetFetch }: DatasetCa
 					라이브러리에서 데이터셋 삭제
 				</button>
 			)}
-			{!dataset.inLibrary && (
+			{!dataset.isUploading && !dataset.inLibrary && (
 				<button
 					type="button"
 					className="btn-bottom js-modal-open"

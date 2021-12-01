@@ -359,6 +359,10 @@ select::-ms-expand { display: none; /* 화살표 없애기 for IE10, 11*/ }
 .list-project .content { height: 182px; display: -webkit-box; -webkit-line-clamp: 7; -webkit-box-orient: vertical; white-space: normal; overflow: hidden; font-size: 17px; font-weight: 400; color: #353535; line-height: 26px; }
 .list-project .btn-bottom { display: flex; justify-content: center; align-items: center; width: 100%; height: 50px; border: none; border-radius: 0 0 10px 10px; box-sizing: border-box; background: #5edab7; font-size: 17px; font-weight: 700; color: #28413a; transition: .3s all ease-out; }
 .list-project .btn-bottom:hover { background: #28413a; color: #fff; }
+.list-project .btn-gray { background-color: #707070; color: #fff; }
+.list-project .btn-gray:hover { background: #707070; }
+.list-project .btn-red { background-color: #e33131; color: #fff; }
+.list-project .btn-red:hover { background: #470f0f; }
 
 .list-project-v1 .thumb { height: calc(100% - 84px); margin-bottom: 20px; background-size: contain; }
 .list-project-v1 .tit { max-width: 100%; margin-bottom: 5px; }
