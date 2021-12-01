@@ -534,6 +534,7 @@ select::-ms-expand { display: none; /* 화살표 없애기 for IE10, 11*/ }
 
 .nodeDescription .tit { padding: 5px 15px 10px; }
 .nodeDescription .tit .nodeType { font-size: 16px; color: #707070; font-weight: 700; }
+.nodeDescription .txt {padding: 5px 15px 10px; font-size: 16px; color: #707070; font-weight: 400; }
 
 .nodeDescription .descTbl { table-layout: fixed; border-collapse: collapse; border: 1px solid #eee; box-sizing: border-box; }
 .nodeDescription .descTbl .descTh,

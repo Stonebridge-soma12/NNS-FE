@@ -14,6 +14,7 @@ const AveragePooling2DDescriptionComponent = () => {
 			<div className="tit">
 				<h1 className="nodeType">AveragePooling2D</h1>
 			</div>
+			<div className="txt">Average pooling operation for spatial data.</div>
 			<table className="descTbl">
 				<tbody>
 					<tr>

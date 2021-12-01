@@ -7,15 +7,15 @@ const useStyle = makeStyles({
 	},
 });
 
-const ActivationDescriptionComponent = () => {
+const ReshapeDescriptionComponent = () => {
 	const classes = useStyle();
 
 	return (
 		<div className="nodeDescription">
 			<div className="tit">
-				<h1 className="nodeType">Activation</h1>
+				<h1 className="nodeType">Reshape</h1>
 			</div>
-			<div className="txt">Applies an activation function to an output.</div>
+			<div className="txt">Layer that reshapes inputs into the given shape.</div>
 			<table className="descTbl">
 				<tbody>
 					<tr>
@@ -31,14 +31,16 @@ const ActivationDescriptionComponent = () => {
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Activation</div>
+									<div className="txt">target_shape</div>
 								</div>
 							</div>
 						</td>
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Activation function, such as &quot;relu&quot;.</div>
+									<div className="txt">
+										Target shape. Tuple of integers, does not include the samples dimension (batch size).
+									</div>
 								</div>
 							</div>
 						</td>
@@ -49,4 +51,4 @@ const ActivationDescriptionComponent = () => {
 	);
 };
 
-export default memo(ActivationDescriptionComponent);
+export default memo(ReshapeDescriptionComponent);

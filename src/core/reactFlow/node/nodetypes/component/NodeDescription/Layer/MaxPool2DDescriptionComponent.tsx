@@ -7,15 +7,15 @@ const useStyle = makeStyles({
 	},
 });
 
-const BatchNormalizationDescriptionComponent = () => {
+const MaxPool2DDescriptionComponent = () => {
 	const classes = useStyle();
 
 	return (
 		<div className="nodeDescription">
 			<div className="tit">
-				<h1 className="nodeType">BatchNormalization</h1>
+				<h1 className="nodeType">MaxPool2D</h1>
 			</div>
-			<div className="txt">Layer that normalizes its inputs.</div>
+			<div className="txt">Max pooling operation for 2D spatial data.</div>
 			<table className="descTbl">
 				<tbody>
 					<tr>
@@ -31,7 +31,7 @@ const BatchNormalizationDescriptionComponent = () => {
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">axis</div>
+									<div className="txt">padding</div>
 								</div>
 							</div>
 						</td>
@@ -39,11 +39,9 @@ const BatchNormalizationDescriptionComponent = () => {
 							<div className="content">
 								<div className="txt-group">
 									<div className="txt">
-										Integer, the axis that should be normalized (typically the features axis). For instance, after a{' '}
-										<span className={classes.bold}>Conv2D</span> layer with{' '}
-										<span className={classes.bold}>data_format=&quot;channels_first&quot;</span>, set{' '}
-										<span className={classes.bold}>axis=1</span> in{' '}
-										<span className={classes.bold}>BatchNormalization</span>.
+										One of &quot;valid&quot; or &quot;same&quot; (case-insensitive). &quot;valid&quot; means no padding.
+										&quot;same&quot; results in padding evenly to the left/right or up/down of the input such that
+										output has the same height/width dimension as the input.
 									</div>
 								</div>
 							</div>
@@ -53,14 +51,18 @@ const BatchNormalizationDescriptionComponent = () => {
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">epsilon</div>
+									<div className="txt">pool_size</div>
 								</div>
 							</div>
 						</td>
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Small float added to variance to avoid dividing by zero.</div>
+									<div className="txt">
+										integer or tuple of 2 integers, window size over which to take the maximum. (2, 2) will take the max
+										value over a 2x2 pooling window. If only one integer is specified, the same window length will be
+										used for both dimensions.
+									</div>
 								</div>
 							</div>
 						</td>
@@ -69,14 +71,17 @@ const BatchNormalizationDescriptionComponent = () => {
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">momentum</div>
+									<div className="txt">strides</div>
 								</div>
 							</div>
 						</td>
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Momentum for the moving average.</div>
+									<div className="txt">
+										Integer, tuple of 2 integers, or None. Strides values. Specifies how far the pooling window moves
+										for each pooling step. If None, it will default to <span className={classes.bold}>pool_size.</span>
+									</div>
 								</div>
 							</div>
 						</td>
@@ -87,4 +92,4 @@ const BatchNormalizationDescriptionComponent = () => {
 	);
 };
 
-export default memo(BatchNormalizationDescriptionComponent);
+export default memo(MaxPool2DDescriptionComponent);

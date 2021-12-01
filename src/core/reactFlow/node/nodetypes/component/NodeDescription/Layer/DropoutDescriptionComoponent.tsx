@@ -7,15 +7,15 @@ const useStyle = makeStyles({
 	},
 });
 
-const ActivationDescriptionComponent = () => {
+const DropoutDescriptionComponent = () => {
 	const classes = useStyle();
 
 	return (
 		<div className="nodeDescription">
 			<div className="tit">
-				<h1 className="nodeType">Activation</h1>
+				<h1 className="nodeType">Dropout</h1>
 			</div>
-			<div className="txt">Applies an activation function to an output.</div>
+			<div className="txt">Applies Dropout to the input.</div>
 			<table className="descTbl">
 				<tbody>
 					<tr>
@@ -31,14 +31,14 @@ const ActivationDescriptionComponent = () => {
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Activation</div>
+									<div className="txt">rate</div>
 								</div>
 							</div>
 						</td>
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Activation function, such as &quot;relu&quot;.</div>
+									<div className="txt">Float between 0 and 1. Fraction of the input units to drop.</div>
 								</div>
 							</div>
 						</td>
@@ -49,4 +49,4 @@ const ActivationDescriptionComponent = () => {
 	);
 };
 
-export default memo(ActivationDescriptionComponent);
+export default memo(DropoutDescriptionComponent);

@@ -7,15 +7,15 @@ const useStyle = makeStyles({
 	},
 });
 
-const ActivationDescriptionComponent = () => {
+const DenseDescriptionComponent = () => {
 	const classes = useStyle();
 
 	return (
 		<div className="nodeDescription">
 			<div className="tit">
-				<h1 className="nodeType">Activation</h1>
+				<h1 className="nodeType">Dense</h1>
 			</div>
-			<div className="txt">Applies an activation function to an output.</div>
+			<div className="txt">Just your regular densely-connected NN layer.</div>
 			<table className="descTbl">
 				<tbody>
 					<tr>
@@ -31,14 +31,14 @@ const ActivationDescriptionComponent = () => {
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Activation</div>
+									<div className="txt">units</div>
 								</div>
 							</div>
 						</td>
 						<td className="descTd">
 							<div className="content">
 								<div className="txt-group">
-									<div className="txt">Activation function, such as &quot;relu&quot;.</div>
+									<div className="txt">Positive integer, dimensionality of the output space.</div>
 								</div>
 							</div>
 						</td>
@@ -49,4 +49,4 @@ const ActivationDescriptionComponent = () => {
 	);
 };
 
-export default memo(ActivationDescriptionComponent);
+export default memo(DenseDescriptionComponent);
