@@ -3,6 +3,12 @@ export type GetDatasetListQuery = {
 	searchContent: string;
 } & PageNation;
 
+export type DatasetThumbnail = {
+	valid: boolean;
+	imageId: number;
+	url: string;
+};
+
 export type Dataset = {
 	id: string;
 	datasetNo: number;
@@ -15,6 +21,8 @@ export type Dataset = {
 	usable: boolean;
 	inLibrary: boolean;
 	isUploading: boolean;
+	thumbnail: DatasetThumbnail;
+	userName: string;
 };
 
 export type PageNation = {

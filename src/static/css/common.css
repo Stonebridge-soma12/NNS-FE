@@ -382,8 +382,9 @@ select::-ms-expand { display: none; /* 화살표 없애기 for IE10, 11*/ }
 .modal-page1 .content .tab-group .tab-menu { display: flex; margin-bottom: 20px; }
 .modal-page1 .content .tab-group .tab-menu div { margin-right: 35px; padding-bottom: 4px; box-sizing: border-box; font-size: 20px; font-weight: 700; color: #000; cursor: pointer; }
 .modal-page1 .content .tab-group .tab-menu div.active { border-bottom: 3.5px solid #5edab7; box-sizing: border-box; color: #5edab7; }
-.modal-page1 .content .tab-group #tab1 { height: calc(100% - 65px); font-size: 17px; color: #353535; line-height: 26px; white-space: pre-line; overflow-y: auto; }
+.modal-page1 .content .tab-group #tab1 { min-width: 500px; height: calc(100% - 65px); font-size: 17px; color: #353535; line-height: 26px; white-space: pre-line; overflow-y: auto; }
 
+.add-library {display: flex; justify-content: center; text-align: center; align-items: center; width: 160px; height: 44px; padding: 0 20px; border: 1px solid #979797; border-radius: 22px; box-sizing: border-box; font-size: 14px; font-weight: 400; color: #000; cursor: pointer; }
 
 /*에셋*/
 .asset { height: calc(100% - 86px); background: #f6f6f6; overflow-y: auto; }
